@@ -19,20 +19,12 @@ App.use(bodyParser.json())
 App.get('/teachers', async(req,res)=> {
     try {
         const getTeachers = await pool.query("SELECT * FROM teacher");
-        // res.json(getTeachers.rows);
-        // console.table(getTeachers.rows)
-        console.log(getTeachers.rows[1].first_name)
-        res.render("addteacher", {
-            first_name: getTeachers.rows[1].first_name,
-            last_name: getTeachers.rows,
-            email: getTeachers.rows
-        })
+        res.json(getTeachers.rows);
+        console.table(getTeachers.rows)
     } catch (err) {
         console.error(err.message)
     }
 })
-
-
 
 App.get('/getAll', async(req,res)=> {
     try {
@@ -43,8 +35,6 @@ App.get('/getAll', async(req,res)=> {
         console.error(err.message)
     }
 })
-
-
 
 // Get subjects
 App.get('/subject', async(req,res)=> {
@@ -127,94 +117,3 @@ App.get('/multi_subject', async(req,res)=> {
 App.listen(3000, () => {
     console.log("server started on port 3000")
 })
-
-
-
-
-
-
-
-//  "express": "^4.17.3",
-//  "express-handlebars": "^6.0.5",
-//  "handlebars": "^4.7.7",
-//  "nodemon": "^2.0.15",
-//  "pg": "^8.7.3",
-//  "pool": "^0.4.1",
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// // import { createRequire } from 'module';
-// // const require = createRequire(import.meta.url);
-// import express from "express"
-// import bodyParser from "body-parser"
-// import exphbs from "express-handlebars"
-// import pg from "pg"
-// import Pool from "pool"
-// import './functions/add_teacher.sql'
-// import Routes from "./routes"
-
-// const app = express();
-// const port = 3000;
-
-// app.use(bodyParser.urlencoded({ extended: false }))
-// app.use(bodyParser.json());
-
-// const connectionString =
-//   process.env.DATABASE_URL ||
-//   "postgresql://nwashiela:pg12345@localhost:5432/schools";
-
-// const pool = new Pool({
-//   connectionString,
-// });
-
-// //setup template handlebars as the template engine
-// app.engine('handlebars', exphbs({defaultLayout: 'main'}));
-// app.set('view engine', 'handlebars');
-// // app.use(cors());
-
-// const schoolDT = sch(pool);
-// const catchscl = Routes(schoolDT);
-
-// app.use(express.static("public"));
-
-// app.get("/", catchscl.getteachers());
-
-// app.post("/teachers", catchscl);
-
-// app.get("/teachers", catchscl);
-
-// app.get("/clearAll",catchscl);
-
-// app.listen(port, () =>
-// console.log(`Server is listerning on port: http://localhost:${port} `) 
-// );
-
-// // app.get("/",async (req,res)=>{
-// //     await pool.query("select * from add_teachers("teacher_name")")
-// //     res.render('index',{});
-// //     })
