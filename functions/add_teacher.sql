@@ -1,5 +1,3 @@
-module.exports = function (pool) {
-
 	create or replace function 
 	add_teacher ( f_name text, l_name text, email_gmail text )
 	returns boolean as
@@ -23,6 +21,4 @@ select into total count(*) from teacher
 end;
 $$
 Language plpgsql;
-
 -- \i functions/add_teacher.sql;
-}

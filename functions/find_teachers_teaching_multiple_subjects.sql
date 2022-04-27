@@ -1,6 +1,4 @@
-module.exports = function(pool) {
-
-   create or replace function 
+create or replace function 
 	find_teachers_teaching_multiple_subjects ()
 	returns table(id int, first_name text, last_name text, email text, subject_count bigint) 
     as
@@ -24,6 +22,5 @@ teacher.id,
 having count(subject.name) > 1;
 
 end;
-$$
+$$.
 Language plpgsql;
-}

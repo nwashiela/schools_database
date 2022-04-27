@@ -1,5 +1,4 @@
-module.exports = function(pool) {
-	create or replace function find_teachers_for_subject (
+create or replace function find_teachers_for_subject (
 	subject_name text
 )
 	returns table(id int, first_name text, last_name text, email text) 
@@ -21,4 +20,3 @@ return query
 end;
 $$
 Language plpgsql;
-}
