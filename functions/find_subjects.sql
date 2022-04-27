@@ -1,4 +1,3 @@
-module.exports = function(pool){
 
 	CREATE TYPE subject_type AS (
     id INT,
@@ -20,5 +19,4 @@ return query
 
 end;
 $$
-Language plpgsql;
-}
+Language plpgsql;}

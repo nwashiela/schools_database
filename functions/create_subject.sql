@@ -1,4 +1,3 @@
-module.exports = function (pool){
 
 	create or replace function 
 	create_subject ( the_name text )
@@ -28,4 +27,3 @@ begin
 end;
 $$
 Language plpgsql;
-}

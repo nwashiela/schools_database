@@ -1,6 +1,4 @@
-module.exports = function(pool) {
-
-    create or replace function 
+ create or replace function 
  link_teacher_to_subject (teach_id int, sub_id int )
 returns boolean as 
 
@@ -14,6 +12,5 @@ return true;
  end;
  $$
  Language plpgsql;
-        
 
-}
+--  assign teacher and subject.
