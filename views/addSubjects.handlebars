@@ -1,0 +1,73 @@
+<style>
+
+.card {
+      box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+      transition: 0.3s;
+      width: 40%;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 100px;
+      margin-bottom: auto;
+      
+    }
+    
+    .card:hover {
+      box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    }
+    
+    .container {
+      padding: 2px 16px;
+    }
+    .btn{
+        background-color:black; 
+        border-radius: 50%;
+        color: white;
+        padding: 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+  
+    }
+</style>
+
+<div class="main" >
+
+    <div class="card">
+        <div class="container">
+
+            <div class="">
+                 <ul>
+                {{!--loop column from subject database  --}}
+                {{#each subject}}
+                <li>{{name}}</li>
+               <div>
+                   <a href="/del_subject/{{id}}" type="submit" > clear </a>
+               </div>
+
+                {{/each}}
+              </ul>  
+            </div>
+            
+         <div class="" >
+              <form action="http://localhost:3000/add_subject/" method="Post">
+           
+             <div class="addSub">
+             <input type="text" name="name" placeholder="New subject" value={{name}}> 
+             <button class="btn" type="submit" >
+                 <a href=""></a>
+                {{!-- <i class="plusIcon" style="font-size:48px;color:rgba(23, 151, 180, 0.763)"></i> --}}
+             </button>
+             
+            </div>
+
+            </form>
+         </div>
+        </div>
+      </div>
+     
+
+</div>
+    

@@ -1,4 +1,4 @@
- create or replace function 
+create or replace function 
  link_teacher_to_subject (teach_id int, sub_id int )
 returns boolean as 
 
@@ -13,4 +13,4 @@ return true;
  $$
  Language plpgsql;
 
---  assign teacher and subject.
+--  assign subtoteacer
