@@ -1,3 +1,4 @@
+drop table teacher_subject CASCADE;
 create table teacher_subject (
 	teacher_id int not null,
 	subject_id int not null,

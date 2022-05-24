@@ -4,11 +4,59 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/public/style.css">
+    <link rel="stylesheet" href="css/style.css">
     <title>Document</title>
 </head>
+   <style>
+    body {margin: 0;}
+    ul.topnav {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: #333;
+    
+    }
+    
+    ul.topnav li {float: right;text-align: center;}
+    
+    ul.topnav li a {
+      display: block;
+      color: white;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+      
+    }
+    
+    ul.topnav li a:hover:not(.active) {background-color: rgba(23, 151, 180, 0.763);}
+    
+    ul.topnav li a.active {background-color: black;}
+    
+    ul.topnav h2.left {float: left;color: white;}
+    @media screen and (max-width: 900px) {
+      ul.topnav li.left, 
+      ul.topnav li {float: none;}
+    }
+    </style>
 <body>
+    <div container="main">
+
+    <ul class="topnav">
+      <h2 class="left">Schools Managent App</h2>
+        <li><a class="active" href="/multi_subject">Home</a></li>
+        <li><a href="/teachers">Teachers</a></li>
+        <li><a href="/subject">Subjects</a></li>
+       
+    </ul>
+        {{!-- <div container="home-page" ><a href="">school infromation</a>
+         </div> 
+        <div container="teachers-page"><a href=""> Add a teacher</a>
+        </div>
+    
+        <div container="subject-page"><a href="">Add subject</a>
+        </div> --}}
+    </div>
     {{{body}}}
 </body>
 </html>
