@@ -19,4 +19,4 @@ return query
 
 end;
 $$
-Language plpgsql;}
+Language plpgsql;

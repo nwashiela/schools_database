@@ -22,5 +22,5 @@ teacher.id,
 having count(subject.name) > 1;
 
 end;
-$$.
+$$
 Language plpgsql;
