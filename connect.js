@@ -5,11 +5,7 @@ const pool = new Pool({
     password: '123456',
     database: 'postgres',
     host: 'localhost',
-    port: 5432,
-
-    connectionString, ssl: {
-        rejectUnauthorized: false
-    }
+    port: 5432
 
 })
 
