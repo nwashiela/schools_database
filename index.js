@@ -9,8 +9,7 @@ const pool = require("./connect");
 const session = require('express-session');
 const flash  = require('express-flash');
 
-//calling css
-// App.use(express.static("public"));
+
 
 // Then these two lines after you initialise your express app
 App.engine("handlebars", exphbs.engine({ defaultLayout: "main" }));
