@@ -274,7 +274,9 @@ App.get('/teacher_for_subject/:name', async (req,res) => {
     }
 })
 
-App.listen(3000, () => {
+const PORT = process.env.PORT || 3000;
+
+App.listen(PORT, () => {
     console.log("server started on port 3000")
 })
 
