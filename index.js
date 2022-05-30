@@ -75,7 +75,7 @@ App.get('/teacher_subject', async(req,res)=> {
 })
 
 // Add a new teacher
-App.post('/add_teacher', async (req,res,data)=> {
+App.post('/add_teacher', async (req,res)=> {
     try {
         const { first_name, last_name, email} = req.body;
         

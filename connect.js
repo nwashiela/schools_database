@@ -13,9 +13,15 @@ const Pool = require("pg").Pool;
 
 const connectionString = process.env.DATABASE_URL || 'postgresql://postgres:123456@localhost:5432/postgres';
 
-const pool = new Pool({
-    connectionString,
-    // ssl : useSSL
-  });
+// const pool = new Pool({
+//     connectionString
+//     // ssl : useSSL
+//   });
+
+  const pool = new Pool({
+	connectionString, ssl: {
+		rejectUnauthorized: false
+	}
+});
 
 module.exports = pool;
