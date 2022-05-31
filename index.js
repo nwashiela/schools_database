@@ -7,6 +7,7 @@ const exphbs = require("express-handlebars");
 const pool = require("./connect");
 
 const session = require('express-session');
+const MemoryStore = require('memorystore')(session)
 const flash  = require('express-flash');
 
 
@@ -16,11 +17,19 @@ App.engine("handlebars", exphbs.engine({ defaultLayout: "main" }));
 App.set("view engine", "handlebars");
 
 // initialise session middleware - flash-express depends on it
-App.use(session({
-    secret : "secret",
+// App.use(session({
+//     secret : "secret",
+//     resave: false,
+//     saveUninitialized: true
+//   }));
+app.use(session({
+    cookie: { maxAge: 86400000 },
+    store: new MemoryStore({
+      checkPeriod: 86400000 // prune expired entries every 24h
+    }),
     resave: false,
-    saveUninitialized: true
-  }));
+    secret: 'keyboard cat'
+}))
 
   // initialise the flash middleware
 App.use(flash());
