@@ -10,7 +10,7 @@ const session = require('express-session');
 const flash  = require('express-flash');
 
 
-
+App.use(express.static('public'))
 // Then these two lines after you initialise your express app
 App.engine("handlebars", exphbs.engine({ defaultLayout: "main" }));
 App.set("view engine", "handlebars");
