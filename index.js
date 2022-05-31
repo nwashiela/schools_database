@@ -217,7 +217,7 @@ App.get('/del_subject/:id', async(req, res) => {
 //     }
 // })
 
-App.get('/multi_subject', async (req,res) => {
+App.get('/', async (req,res) => {
 
     let subjects = await pool.query("select * from subject")
     subjects=subjects.rows
@@ -260,7 +260,7 @@ App.post('/assign', async(req,res)=> {
         const subject_name = getSubject.rows[0].name
 
         req.flash('info', `${teacher_name} is assign to ${subject_name}`);
-        res.redirect('/multi_subject')
+        res.redirect('/')
     } catch (err) {
         console.error(err.message)
     }
