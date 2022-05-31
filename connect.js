@@ -10,6 +10,11 @@ const Pool = require("pg").Pool;
 //     ssl : useSSL
 
 // })
+let useSSL = false;
+let local = process.env.LOCAL || false;
+if (process.env.DATABASE_URL && !local){
+    useSSL = true;
+}
 
 const connectionString = process.env.DATABASE_URL || 'postgresql://postgres:123456@localhost:5432/postgres';
 
