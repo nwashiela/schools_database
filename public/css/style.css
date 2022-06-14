@@ -45,7 +45,7 @@ body {
 table {
   font-family: arial, sans-serif;
   border-collapse: collapse;
-  width: 85%;
+  width: 55%;
   margin-left: auto;
  margin-right: auto;
  margin-top: 20px;
@@ -55,7 +55,7 @@ td, th {
   border: 1px solid rgba(23, 151, 180, 0.763);
   text-align: left;
   padding: 8px;
-  width: 50%;
+  width: 20%;
 }
 
 tr:nth-child(even) {
@@ -125,8 +125,12 @@ input[type=submit] {
   .count {
     font-size: 25px;
     font-weight: bold;
+    text-align:center
   }
   ul {
+    list-style: none;
+  }
+  li {
     list-style: none;
   }
   a {

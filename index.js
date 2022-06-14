@@ -9,8 +9,9 @@ const pool = require("./connect");
 const session = require('express-session');
 const MemoryStore = require('memorystore')(session)
 const flash  = require('express-flash');
+// const expressValidator = require('express-validator')
 
-
+// App.use(expressValidator())
 App.use(express.static('public'))
 // Then these two lines after you initialise your express app
 App.engine("handlebars", exphbs.engine({ defaultLayout: "main" }));
@@ -88,19 +89,26 @@ App.get('/teacher_subject', async(req,res)=> {
 App.post('/add_teacher', async (req,res)=> {
     try {
         const { first_name, last_name, email} = req.body;
-        
-        const newTeacher = await pool.query("INSERT INTO teacher (first_name, last_name, email) VALUES ($1, $2, $3) RETURNING * ", [first_name, last_name, email]);
-        console.log(newTeacher.rows)
+
+        if(!first_name || !email || !last_name ) {
+            
+            req.flash('info', ' Fill Up the Text Box ')
+        }else{
+            const newTeacher = await pool.query("INSERT INTO teacher (first_name, last_name, email) VALUES ($1, $2, $3) RETURNING * ", [first_name, last_name, email]);
+            console.log(newTeacher.rows)
+            req.flash('info',`${first_name} is added to the list`)
+        }
+       
         const getTeachers = await pool.query("SELECT * FROM teacher");
         // res.json(newTeacher.rows[0])
         
-     req.flash('info',`${first_name} is added to the list`)
-
-        // console.log(messages)
         res.render('addTeachers', {
             teachers: getTeachers.rows,
             
         })
+
+        // console.log(messages)
+      
     } catch (err) {
         if(err.code == "23505"){
             req.flash('info', 'already added' )
@@ -116,18 +124,21 @@ App.post('/add_subject', async(req,res)=> {
     //    await subjectTeacher(sub)
         const { name } = req.body;
         console.log(name)
-
+       
         // avoid dublicates
-        
+        if(!name){
+            req.flash('info', ' Fill Up The Name ')
+        }else{
+            const newSubject = await pool.query("INSERT INTO subject (name) VALUES ($1) RETURNING * ", [name]);
+            console.log(newSubject)
+            req.flash('info', `${name} is added to the list!`);
+        }
 
-        const newSubject = await pool.query("INSERT INTO subject (name) VALUES ($1) RETURNING * ", [name]);
-        console.log(newSubject)
-        
         // res.json(newSubject.rows[0])
         const getSubject = await pool.query("SELECT * FROM subject ");
         // await req.flash('info',`${name} is added to the list!`)
         // const subjctMessages = await req.consumeFlash('info');
-        req.flash('info', `${name} is added to the list!`);
+       
 
         res.render('addSubjects', {
             subject: getSubject.rows,

@@ -57,8 +57,6 @@ h2{ text-align: center;
 
 
 <div class="containers">
-  <h2>Add Teachers</h2>
-
      {{#if messages.info}}
     <div class="flash">
       {{messages.info}}
@@ -67,6 +65,7 @@ h2{ text-align: center;
 
   <div class="card">
     <div class="containerOne">
+        <h2>Add Teachers</h2>
       <form action="/add_teacher" method="post">
         <input  type="text" name="first_name" placeholder="first-name" /><br
         /><br />
